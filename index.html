@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A live weather dashboard showing temperature, humidity, wind speed and forecasts.">
+    <title>SkyCast | Weather Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="container">
+
+        <header class="header">
+            <a class="logo" href="#">☀ SkyCast</a>
+            <span class="live-label">● LIVE WEATHER</span>
+        </header>
+
+        <section class="hero">
+            <p class="eyebrow">WEATHER AT A GLANCE</p>
+            <h1>Discover the weather<br>around you.</h1>
+            <p class="subtitle">
+                Get current weather conditions and forecasts for any city.
+            </p>
+
+            <form id="searchForm" class="search-box">
+                <span>⌕</span>
+                <input
+                    type="text"
+                    id="cityInput"
+                    placeholder="Search for a city..."
+                    aria-label="Enter city name"
+                    required
+                >
+                <button type="submit" id="searchBtn">Search</button>
+            </form>
+
+            <p id="message" class="message" role="status" aria-live="polite"></p>
+        </section>
+
+        <section id="weatherSection" class="weather-section hidden">
+
+            <div class="location-row">
+                <div>
+                    <p class="eyebrow">CURRENT LOCATION</p>
+                    <h2 id="cityName">City</h2>
+                    <p id="countryName" class="muted"></p>
+                </div>
+                <div class="date-info">
+                    <span id="currentDate"></span>
+                    <small id="updatedTime"></small>
+                </div>
+            </div>
+
+            <div class="weather-main">
+                <div>
+                    <p class="eyebrow">CURRENT TEMPERATURE</p>
+                    <h2 class="temperature">
+                        <span id="temperature">--</span><sup>°C</sup>
+                    </h2>
+                    <p id="weatherDescription" class="condition">
+                        Loading...
+                    </p>
+                    <p class="feels">
+                        Feels like <span id="feelsLike">--</span>°C
+                    </p>
+                </div>
+                <div id="weatherIcon" class="weather-icon">🌤️</div>
+            </div>
+
+            <h3 class="section-title">Today's Weather Details</h3>
+
+            <div class="metrics-grid">
+                <article class="metric-card">
+                    <span class="metric-icon">💧</span>
+                    <p>Humidity</p>
+                    <h3 id="humidity">--%</h3>
+                    <small>Relative humidity</small>
+                </article>
+
+                <article class="metric-card">
+                    <span class="metric-icon">💨</span>
+                    <p>Wind Speed</p>
+                    <h3 id="windSpeed">-- km/h</h3>
+                    <small>Wind at 10 meters</small>
+                </article>
+
+                <article class="metric-card">
+                    <span class="metric-icon">🌧️</span>
+                    <p>Precipitation</p>
+                    <h3 id="precipitation">-- mm</h3>
+                    <small>Current precipitation</small>
+                </article>
+
+                <article class="metric-card">
+                    <span class="metric-icon">🌡️</span>
+                    <p>Temperature Range</p>
+                    <h3 id="tempRange">-- / --°C</h3>
+                    <small>Today's min / max</small>
+                </article>
+            </div>
+
+            <h3 class="section-title">5-Day Forecast</h3>
+            <div id="forecastGrid" class="forecast-grid"></div>
+
+        </section>
+
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Fetching weather information...</p>
+        </div>
+
+        <footer>
+            <p>© 2026 SkyCast Weather Dashboard</p>
+            <p>Powered by Open-Meteo Weather API</p>
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
